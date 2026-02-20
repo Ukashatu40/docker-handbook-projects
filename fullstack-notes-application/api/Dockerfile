@@ -2,7 +2,8 @@
 FROM node:lts-alpine as builder
 
 # install dependencies for node-gyp
-RUN apk add --no-cache python2 make g++
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.20/main/ \
+    python3 make g++ || (sleep 5 && apk add --no-cache python3 make g++)
 
 WORKDIR /app
 
